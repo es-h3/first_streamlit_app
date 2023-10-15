@@ -15,6 +15,6 @@ sel=streamlit.multiselect("Pick som fruits:",list(my_fruit_list.index),["Avocado
 
 selec=', '.join(sel)
 #streamlit.text(type(sel))
-if sel:
+if len(sel)>0:
   streamlit.dataframe(my_fruit_list.loc[sel])
 
