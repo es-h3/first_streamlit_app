@@ -20,7 +20,9 @@ selec=', '.join(sel)
 if len(sel)>0:
   streamlit.dataframe(my_fruit_list.loc[sel])
 streamlit.header("Fruityvice Fruit Advice")
-fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+"kiwi")
+fruit_choice=streamlit.text_input("What fruit would you like information about?","orange")
+streamlit.text(f"The user entered:{fruit_choice}"
+fruityvice_response=requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
 #streamlit.text(fruityvice_response.json())
 fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
