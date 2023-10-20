@@ -22,4 +22,6 @@ if len(sel)>0:
 streamlit.header("Fruityvice Fruit Advice")
 fruityvice_response=requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+fruityvice_normalized=pd.json_normalize(fruityvice_response.json())
+streamlit.dateframe(fruityvice_normalized)
 
