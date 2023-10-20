@@ -21,5 +21,5 @@ if len(sel)>0:
   streamlit.dataframe(my_fruit_list.loc[sel])
 streamlit.header("Fruityvice Fruit Advice")
 fruityvice_service=requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_service)
+streamlit.text(fruityvice_service.json)
 
