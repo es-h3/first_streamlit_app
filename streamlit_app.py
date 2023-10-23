@@ -67,12 +67,14 @@ if streamlit.button("Get Fruit Load List"):
 #column_names = [desc[0] for desc in my_cur.description]
 #df=pd.DataFrame(my_data_row,columns=column_names)
 
-  fruit_choice2=streamlit.text_input("What fruit would you like to add:")
-  if isinstance(fruit_choice2, list):
-     streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
-  else:
-    streamlit.write(f"Thank you for selecting {fruit_choice2}")
-  my_cur.execute(f"insert into fruit_load_list values ('from streamlit')") 
-   
+my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur=my_cnx.cursor()
+fruit_choice2=streamlit.text_input("What fruit would you like to add:")
+if isinstance(fruit_choice2, list):
+   streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
+else:
+  streamlit.write(f"Thank you for selecting {fruit_choice2}")
+my_cur.execute(f"insert into fruit_load_list values ('from streamlit')") 
+ 
    
                    
