@@ -74,7 +74,7 @@ def insert_row_snowflake(new_fruit):
   try:
     my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_cur=my_cnx.cursor()
-    my_cur.execute(f"insert into fruit_load_list values ({new_fruit})")
+    my_cur.execute(f"insert into fruit_load_list values ('{new_fruit}')")
     return f"Thank you for adding {new_fruit}" 
   except Exception as e:
     return f"Error when writing to Snowflake: {e}"
