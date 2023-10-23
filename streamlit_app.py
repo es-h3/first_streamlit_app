@@ -41,6 +41,7 @@ if isinstance(fruit_choice2, list):
    streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
 else:
   streamlit.write(f"Thank you for selecting {fruit_choice2}")
+my_cur.execute(f"insert into fruit_load_list values ('from streamlit)") 
  
    
                    
