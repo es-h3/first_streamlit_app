@@ -55,6 +55,7 @@ if streamlit.button("Get Fruit Load List"):
   my_cur,my_data_rows=get_fruit_load_list()
   column_names = [desc[0] for desc in my_cur.description]
   df=pd.DataFrame(my_data_rows,columns=column_names)
+  streamlit.dataframe(df)
     
   
 
@@ -66,7 +67,7 @@ if streamlit.button("Get Fruit Load List"):
 #my_data_row=my_cur.fetchall()
 #column_names = [desc[0] for desc in my_cur.description]
 #df=pd.DataFrame(my_data_row,columns=column_names)
-
+streamlit.stop()
 my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur=my_cnx.cursor()
 fruit_choice2=streamlit.text_input("What fruit would you like to add:")
