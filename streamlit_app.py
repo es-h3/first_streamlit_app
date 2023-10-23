@@ -38,7 +38,7 @@ streamlit.subheader(f"The fruit load list contains:{type(my_data_row)}")
 streamlit.dataframe(df)
 fruit_choice2=streamlit.text_input("What fruit would you like to add:")
 if len(fruit_choice2)>0:
-  if len(fruit_choice2)==1:
+  if isinstance(fruit_choice2, list) is False:
     streamlit.text=fruit_choice2
   else:
     streamlit.text(", ".join(fruit_choice2))
