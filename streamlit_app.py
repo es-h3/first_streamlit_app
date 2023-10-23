@@ -46,7 +46,10 @@ def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
     my_cur.execute("select * from fruit_load_list")
     return my_cur,my_cur.fetchall()
-    
+
+
+streamlit.subheader(f"The fruit load list contains")
+
 if streamlit.button("Get Fruit Load List"):
   my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_cur,my_data_rows=get_fruit_load_list()
@@ -63,8 +66,7 @@ if streamlit.button("Get Fruit Load List"):
 #my_data_row=my_cur.fetchall()
 #column_names = [desc[0] for desc in my_cur.description]
 #df=pd.DataFrame(my_data_row,columns=column_names)
-streamlit.subheader(f"The fruit load list contains:{type(my_data_row)}")
-streamlit.dataframe(df)
+
 fruit_choice2=streamlit.text_input("What fruit would you like to add:")
 if isinstance(fruit_choice2, list):
    streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
