@@ -12,6 +12,7 @@ streamlit.write('🥗 Kale, Spinach & Rocket Smoothie')
 streamlit.write('🐔 Hard-Boiled Free-Range Egg')
 streamlit.write('🥑Avocado Toast')
 streamlit.write('Dette er en test')
+streamlit.write("Dette var gøy")
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 sel=streamlit.multiselect("Pick som fruits:",list(my_fruit_list.index),["Avocado","Strawberries"])
@@ -51,7 +52,7 @@ def get_fruit_load_list():
 streamlit.subheader(f"The fruit load list contains")
 
 if streamlit.button("Get Fruit Load List"):
-  streamlit.write("Dette var gøy")
+  
   my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_cur,my_data_rows=get_fruit_load_list()
   column_names = [desc[0] for desc in my_cur.description]
