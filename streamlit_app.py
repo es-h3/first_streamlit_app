@@ -51,6 +51,7 @@ def get_fruit_load_list():
 streamlit.subheader(f"The fruit load list contains")
 
 if streamlit.button("Get Fruit Load List"):
+  streamlit.text("Dette var gøy")
   my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_cur,my_data_rows=get_fruit_load_list()
   column_names = [desc[0] for desc in my_cur.description]
