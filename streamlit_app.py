@@ -37,6 +37,10 @@ df=pd.DataFrame(my_data_row,columns=column_names)
 streamlit.subheader(f"The fruit load list contains:{type(my_data_row)}")
 streamlit.dataframe(df)
 fruit_choice2=streamlit.text_input("What fruit would you like to add:")
+if isinstance(fruit_choice2, list):
+   streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
+else:
+  streamlit.write(f"Thank you for selecting {fruit_choice2})
  
    
                    
