@@ -69,15 +69,33 @@ if streamlit.button("Get Fruit Load List"):
 #my_data_row=my_cur.fetchall()
 #column_names = [desc[0] for desc in my_cur.description]
 #df=pd.DataFrame(my_data_row,columns=column_names)
-streamlit.stop()
-my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur=my_cnx.cursor()
+
+def insert_row_snowflake(new_fruit):
+  try:
+    my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    my_cur=my_cnx.cursor()
+    my_cur.execute(f"insert into fruit_load_list values (new fruit)")
+    return f"Thank you for adding {new_fruit}" 
+  except Exception as e:
+    return "Error when writing to Snowflake")
+  
+
+#streamlit.stop()
+#my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
+#my_cur=my_cnx.cursor()
 fruit_choice2=streamlit.text_input("What fruit would you like to add:")
-if isinstance(fruit_choice2, list):
-   streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
-else:
-  streamlit.write(f"Thank you for selecting {fruit_choice2}")
-my_cur.execute(f"insert into fruit_load_list values ('from streamlit')") 
+if streamlit.button("Add fruit"):
+  status=insert_row_snowflake(fruit_choice2)
+  streamlit.write(status)
+
+#if isinstance(fruit_choice2, list):
+#   streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
+#else:
+#  streamlit.write(f"Thank you for selecting {fruit_choice2}")
+#my_cur.execute(f"insert into fruit_load_list values ('from streamlit')") 
+
+
+
  
    
                    
