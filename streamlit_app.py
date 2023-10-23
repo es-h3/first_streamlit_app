@@ -32,6 +32,8 @@ my_cur=my_cnx.cursor()
 #my_cur.execute("SELECT CURRENT_USER(), CURRENT_ACCOUNT(), CURRENT_REGION()")
 my_cur.execute("SELECT * FROM fruit_load_list")
 my_data_row=my_cur.fetchall()
+column_names = [desc[0] for desc in my_cur.description]
+df=pd.DataFrame(my_data_row,columns=column_names)
 streamlit.subheader(f"The fruit load list contains:{type(my_data_row)}")
-streamlit.dataframe(my_data_row, column_config={"name": "Fruits"})
+streamlit.dataframe(df)
                    
