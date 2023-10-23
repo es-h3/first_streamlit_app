@@ -77,7 +77,7 @@ def insert_row_snowflake(new_fruit):
     my_cur.execute(f"insert into fruit_load_list values (new fruit)")
     return f"Thank you for adding {new_fruit}" 
   except Exception as e:
-    return "Error when writing to Snowflake"
+    return f"Error when writing to Snowflake: {e}"
   
 
 #streamlit.stop()
