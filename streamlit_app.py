@@ -16,7 +16,7 @@ streamlit.write("Dette var gøy")
  
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 sel=streamlit.multiselect("Pick som fruits:",list(my_fruit_list.index),["Avocado","Strawberries"])
-
+ 
 selec=', '.join(sel)
 #streamlit.text(type(sel))
 if len(sel)>0:
