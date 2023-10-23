@@ -40,7 +40,7 @@ fruit_choice2=streamlit.text_input("What fruit would you like to add:")
 if isinstance(fruit_choice2, list):
    streamlit.write(f"Thank you for selecting"+ " ,".join(fruit_choice2))
 else:
-  streamlit.write(f"Thank you for selecting {fruit_choice2})
+  streamlit.write(f"Thank you for selecting {fruit_choice2}")
  
    
                    
