@@ -39,7 +39,8 @@ try:
     streamlit.dataframe(get_fruityvice_data(fruit_choice))
 except URLError as e:
   streamlit.error()
-streamlit.stop()
+
+#streamlit.stop()
 
 def get_fruit_load_list():
   with my_cnx.cursor() as my_cur:
