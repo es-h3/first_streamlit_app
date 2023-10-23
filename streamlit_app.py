@@ -33,6 +33,5 @@ my_cur=my_cnx.cursor()
 my_cur.execute("SELECT * FROM fruit_load_list")
 my_data_row=my_cur.fetchall()
 streamlit.subheader(f"The fruit load list contains:{type(my_data_row)}")
-streamlit.dataframe(my_data_row, column_config={
-        "name": "App name"}
-
+streamlit.dataframe(my_data_row, column_config={"name": "Frutis"})
+                   )
