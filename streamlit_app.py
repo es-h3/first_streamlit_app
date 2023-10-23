@@ -58,6 +58,7 @@ if streamlit.button("Get Fruit Load List"):
   column_names = [desc[0] for desc in my_cur.description]
   df=pd.DataFrame(my_data_rows,columns=column_names)
   streamlit.dataframe(df)
+  my_cnx.close()
     
   
 
@@ -76,6 +77,7 @@ def insert_row_snowflake(new_fruit):
     my_cnx=snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_cur=my_cnx.cursor()
     my_cur.execute(f"insert into fruit_load_list values ('{new_fruit}')")
+    my_cnx.close()
     return f"Thank you for adding {new_fruit}" 
   except Exception as e:
     return f"Error when writing to Snowflake: {e} insert into fruit_load_list values ('{new_fruit}')"
